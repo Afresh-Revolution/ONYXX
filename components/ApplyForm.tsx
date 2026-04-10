@@ -69,10 +69,10 @@ export function ApplyForm() {
     }
     if (!ok) return;
 
-    const apiBase = (process.env.NEXT_PUBLIC_BACKEND_URL ?? "").replace(/\/$/, "");
+    const apiBase = (process.env.NEXT_PUBLIC_BASE_URL ?? "").replace(/\/$/, "");
     if (!apiBase) {
       showToast(
-        "Application server is not configured (set NEXT_PUBLIC_BACKEND_URL).",
+        "Application server is not configured (set NEXT_PUBLIC_BASE_URL).",
         "error"
       );
       return;
