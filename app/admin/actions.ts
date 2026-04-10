@@ -11,8 +11,8 @@ import { redirect } from "next/navigation";
 export type AdminLoginState = { error?: string } | { ok: true };
 
 function backendBase() {
-  const base = process.env.BACKEND_URL?.replace(/\/$/, "");
-  if (!base) throw new Error("BACKEND_URL is not set");
+  const base = process.env.BASE_URL?.replace(/\/$/, "");
+  if (!base) throw new Error("BASE_URL is not set");
   return base;
 }
 
@@ -47,7 +47,7 @@ export async function adminLoginAction(
   try {
     base = backendBase();
   } catch {
-    return { error: "Server misconfiguration (BACKEND_URL)" };
+    return { error: "Server misconfiguration (BASE_URL)" };
   }
 
   const res = await fetch(`${base}/api/auth/login`, {
