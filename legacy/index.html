@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONYXX CLUB — Modeling Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- ===== Navigation ===== -->
+    <nav class="nav-main" id="mainNav">
+        <a href="#hero" class="nav-logo">
+            <svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="95" cy="90" r="72" fill="#ffffff"/>
+                <path d="M95,32 C83,32 74,43 74,55 C74,63 78,70 84,74 L81,88 L75,108 L69,128 L66,148 L73,148 L79,128 L85,108 L89,148 L93,168 L95,173 L97,168 L101,148 L107,108 L113,128 L119,148 L126,148 L123,128 L117,108 L111,88 L108,74 C114,70 118,63 118,55 C118,43 109,32 97,32Z" fill="#0a0a0a"/>
+                <path d="M167,20 C197,20 217,42 217,70 C217,98 197,120 170,124 L165,107 C184,103 199,90 199,70 C199,50 184,37 167,37" fill="none" stroke="#c9a84c" stroke-width="6" stroke-linecap="round"/>
+                <text x="120" y="218" text-anchor="middle" font-family="'Nunito', sans-serif" font-weight="900" font-size="30" fill="#f5f0e8" letter-spacing="8">ONYXX CLUB</text>
+            </svg>
+        </a>
+        <div class="nav-links">
+            <a href="#models">Models</a>
+            <a href="#ecosystem">Ecosystem</a>
+            <a href="#data">Insights</a>
+            <a href="#gallery">Editorial</a>
+            <a href="#apply">Apply</a>
+            <button class="nav-cta" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">Join Us</button>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#models" onclick="closeMobileNav()">Models</a>
+        <a href="#ecosystem" onclick="closeMobileNav()">Ecosystem</a>
+        <a href="#data" onclick="closeMobileNav()">Insights</a>
+        <a href="#gallery" onclick="closeMobileNav()">Editorial</a>
+        <a href="#apply" onclick="closeMobileNav()">Apply</a>
+    </div>
+
+    <!-- ===== Hero Section ===== -->
+    <section class="hero-section" id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-overlay">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Now Accepting Applications
+            </div>
+            <h1 class="hero-title">ONYXX <span>CLUB</span></h1>
+            <p class="hero-subtitle">Where Elegance Meets Excellence</p>
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="document.getElementById('models').scrollIntoView({behavior:'smooth'})">View Our Talent</button>
+                <button class="btn-secondary" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">Apply Now</button>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ===== Stats Bar ===== -->
+    <section class="stats-bar reveal">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number" data-target="250">0</div>
+                <div class="stat-label">Models Represented</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="1200">0</div>
+                <div class="stat-label">Campaigns Delivered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="12">0</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="94">0</div>
+                <div class="stat-label">Placement Rate %</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Featured Models ===== -->
+    <section class="section" id="models">
+        <div class="bg-glow" style="background:var(--gold);left:-200px;top:0;"></div>
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div>
+                    <div class="section-label"><span class="line"></span> Featured Talent</div>
+                    <h2 class="section-title">Our Roster</h2>
+                    <p class="section-desc">Discover the faces that define <strong style="color:var(--gold);">ONYXX CLUB</strong> — each selected for their unique presence and professional drive.</p>
+                </div>
+            </div>
+            <div class="carousel-wrapper reveal">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Cards injected by JS -->
+                </div>
+            </div>
+            <div class="carousel-nav reveal">
+                <button class="carousel-btn" id="carouselPrev" aria-label="Previous"><i class="fas fa-arrow-left"></i></button>
+                <button class="carousel-btn" id="carouselNext" aria-label="Next"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Ecosystem Section ===== -->
+    <section class="section eco-section" id="ecosystem">
+        <div class="bg-glow" style="background:var(--gold);right:-200px;top:50%;"></div>
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div>
+                    <div class="section-label"><span class="line"></span> Our Process</div>
+                    <h2 class="section-title">The ONYXX Ecosystem</h2>
+                    <p class="section-desc">A <strong style="color:var(--fg);">scientifically structured</strong> pipeline that transforms raw potential into industry-leading talent.</p>
+                </div>
+            </div>
+            <div class="eco-flow">
+                <div class="eco-card reveal reveal-delay-1">
+                    <div class="eco-icon"><i class="fas fa-search"></i></div>
+                    <div class="eco-step">Phase 01</div>
+                    <h3 class="eco-title">Global Scouting</h3>
+                    <p class="eco-desc">Our scouts identify distinctive faces across 30+ countries using data-driven criteria and instinct.</p>
+                </div>
+                <div class="eco-card reveal reveal-delay-2">
+                    <div class="eco-icon"><i class="fas fa-gem"></i></div>
+                    <div class="eco-step">Phase 02</div>
+                    <h3 class="eco-title">Talent Development</h3>
+                    <p class="eco-desc">Rigorous training in posing, walk, nutrition, and personal branding with industry mentors.</p>
+                </div>
+                <div class="eco-card reveal reveal-delay-3">
+                    <div class="eco-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="eco-step">Phase 03</div>
+                    <h3 class="eco-title">Strategic Placement</h3>
+                    <p class="eco-desc">AI-matched casting with agencies, brands, and editorial opportunities worldwide.</p>
+                </div>
+                <div class="eco-card reveal reveal-delay-4">
+                    <div class="eco-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="eco-step">Phase 04</div>
+                    <h3 class="eco-title">Career Management</h3>
+                    <p class="eco-desc">Long-term trajectory planning, contract negotiation, and brand partnership curation.</p>
+                </div>
+            </div>
+            <div class="eco-arrows reveal">
+                <div class="eco-arrow">Scouting <i class="fas fa-chevron-right"></i> Development <i class="fas fa-chevron-right"></i> Placement <i class="fas fa-chevron-right"></i> Management</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Data Dashboard ===== -->
+    <section class="section data-section" id="data">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div>
+                    <div class="section-label"><span class="line"></span> Performance Metrics</div>
+                    <h2 class="section-title">By The Numbers</h2>
+                    <p class="section-desc">Data-driven results that validate our approach to <strong style="color:var(--fg);">model development</strong> and market placement.</p>
+                </div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card reveal reveal-delay-1">
+                    <h3 class="chart-title">Model Category Distribution</h3>
+                    <p class="chart-subtitle">Breakdown of represented talent segments</p>
+                    <div class="chart-canvas-wrap">
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card reveal reveal-delay-2">
+                    <h3 class="chart-title">Placement Success Rate</h3>
+                    <p class="chart-subtitle">Year-over-year growth in successful placements</p>
+                    <div class="chart-canvas-wrap">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="key-metrics reveal">
+                <div class="metric-card">
+                    <div class="metric-value">$4.2M</div>
+                    <div class="metric-label">Total Earnings Generated</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">87</div>
+                    <div class="metric-label">Brand Partnerships Active</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">32</div>
+                    <div class="metric-label">Countries With Placements</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Apply Section ===== -->
+    <section class="section apply-section" id="apply">
+        <div class="bg-glow" style="background:var(--gold);left:50%;top:-100px;transform:translateX(-50%);"></div>
+        <div class="section-inner">
+            <div class="reveal">
+                <div class="section-label"><span class="line"></span> Open Call</div>
+                <h2 class="section-title">Become Part of the Club</h2>
+                <p class="section-desc" style="margin-bottom:0;">We are always looking for extraordinary individuals. Submit your application below.</p>
+            </div>
+            <div class="apply-grid">
+                <div class="apply-info reveal reveal-delay-1">
+                    <h3>What We Look For</h3>
+                    <p>ONYXX CLUB represents a curated selection of talent. Our scouting process is both intuitive and analytical, seeking individuals who bring something unmistakable to the industry.</p>
+                    <ul class="apply-requirements">
+                        <li><i class="fas fa-circle"></i> Height preference: 5'8" and above for women, 6'0" and above for men</li>
+                        <li><i class="fas fa-circle"></i> Strong facial bone structure and unique features</li>
+                        <li><i class="fas fa-circle"></i> Professional attitude and reliability</li>
+                        <li><i class="fas fa-circle"></i> No prior experience required — we develop raw talent</li>
+                        <li><i class="fas fa-circle"></i> Must be 16 years or older to apply</li>
+                        <li><i class="fas fa-circle"></i> Open to all ethnicities, body types within our diverse categories</li>
+                    </ul>
+                </div>
+                <form class="apply-form reveal reveal-delay-2" id="applyForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fname">Full Name</label>
+                            <input type="text" id="fname" placeholder="Your full name" required>
+                            <div class="form-error">Please enter your name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="femail">Email Address</label>
+                            <input type="email" id="femail" placeholder="name@example.com" required>
+                            <div class="form-error">Please enter a valid email</div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fphone">Phone Number</label>
+                            <input type="tel" id="fphone" placeholder="+1 (555) 000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="fdob">Date of Birth</label>
+                            <input type="date" id="fdob" required>
+                            <div class="form-error">Please enter your date of birth</div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fheight">Height</label>
+                            <input type="text" id="fheight" placeholder='e.g. 5\'10"'>
+                        </div>
+                        <div class="form-group">
+                            <label for="fcity">City / Location</label>
+                            <input type="text" id="fcity" placeholder="New York, NY">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fexp">Experience Level</label>
+                        <select id="fexp">
+                            <option value="none">No Experience</option>
+                            <option value="beginner">Beginner (0-1 years)</option>
+                            <option value="intermediate">Intermediate (1-3 years)</option>
+                            <option value="professional">Professional (3+ years)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fportfolio">Portfolio URL (optional)</label>
+                        <input type="url" id="fportfolio" placeholder="https://your-portfolio.com">
+                    </div>
+                    <div class="form-upload" id="uploadArea" role="button" tabindex="0" aria-label="Upload photos">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag photos here or <span>browse files</span></p>
+                        <p style="font-size:0.75rem;margin-top:0.3rem;color:var(--fg-muted);">Up to 5 photos. Min 2 headshots + 1 full body.</p>
+                        <input type="file" id="fileInput" multiple accept="image/*" style="display:none;">
+                    </div>
+                    <div id="fileList" style="margin-bottom:1rem;"></div>
+                    <div class="form-group">
+                        <label for="fmsg">Tell Us About Yourself</label>
+                        <textarea id="fmsg" rows="3" placeholder="Share anything you think we should know..."></textarea>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="fterms" required>
+                        <label for="fterms">I agree to the ONYXX CLUB terms of service and privacy policy. I confirm that all information provided is accurate.</label>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%;padding:1rem;font-size:1rem;">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Gallery Section ===== -->
+    <section class="section" id="gallery" style="background:var(--bg-secondary);">
+        <div class="section-inner">
+            <div class="section-header reveal">
+                <div>
+                    <div class="section-label"><span class="line"></span> Editorial</div>
+                    <h2 class="section-title">Recent Campaigns</h2>
+                    <p class="section-desc">A glimpse into the campaigns and editorial work produced through the <strong style="color:var(--gold);">ONYXX ecosystem</strong>.</p>
+                </div>
+            </div>
+            <div class="gallery-grid reveal">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/onyxx-ed1/800/800.jpg" alt="Editorial campaign" loading="lazy">
+                    <div class="gallery-item-overlay"><span>Vogue Italia — Spring 2026</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/onyxx-ed2/500/400.jpg" alt="Editorial campaign" loading="lazy">
+                    <div class="gallery-item-overlay"><span>Harper's Bazaar — Gold Issue</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/onyxx-ed3/500/400.jpg" alt="Editorial campaign" loading="lazy">
+                    <div class="gallery-item-overlay"><span>Elle — Faces of Now</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/onyxx-ed4/800/400.jpg" alt="Editorial campaign" loading="lazy">
+                    <div class="gallery-item-overlay"><span>Dior Cruise Campaign</span></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/onyxx-ed5/500/400.jpg" alt="Editorial campaign" loading="lazy">
+                    <div class="gallery-item-overlay"><span>W Magazine — Neon Dreams</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Footer ===== -->
+    <footer class="site-footer">
+        <div class="runway-strip"></div>
+        <div class="footer-body">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <svg viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg" style="height:48px;width:auto;">
+                        <circle cx="95" cy="90" r="72" fill="#ffffff"/>
+                        <path d="M95,32 C83,32 74,43 74,55 C74,63 78,70 84,74 L81,88 L75,108 L69,128 L66,148 L73,148 L79,128 L85,108 L89,148 L93,168 L95,173 L97,168 L101,148 L107,108 L113,128 L119,148 L126,148 L123,128 L117,108 L111,88 L108,74 C114,70 118,63 118,55 C118,43 109,32 97,32Z" fill="#0a0a0a"/>
+                        <path d="M167,20 C197,20 217,42 217,70 C217,98 197,120 170,124 L165,107 C184,103 199,90 199,70 C199,50 184,37 167,37" fill="none" stroke="#c9a84c" stroke-width="6" stroke-linecap="round"/>
+                        <text x="120" y="218" text-anchor="middle" font-family="'Nunito', sans-serif" font-weight="900" font-size="30" fill="#f5f0e8" letter-spacing="8">ONYXX CLUB</text>
+                    </svg>
+                    <p>Redefining the modeling industry through data-driven talent development and uncompromising standards of elegance.</p>
+                    <div class="footer-socials">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#models">Models</a></li>
+                        <li><a href="#ecosystem">Ecosystem</a></li>
+                        <li><a href="#data">Insights</a></li>
+                        <li><a href="#gallery">Editorial</a></li>
+                        <li><a href="#apply">Apply</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Model Scouting</a></li>
+                        <li><a href="#">Development Programs</a></li>
+                        <li><a href="#">Brand Partnerships</a></li>
+                        <li><a href="#">Event Casting</a></li>
+                        <li><a href="#">Content Production</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">New York, NY</a></li>
+                        <li><a href="#">London, UK</a></li>
+                        <li><a href="#">Milan, Italy</a></li>
+                        <li><a href="#">Paris, France</a></li>
+                        <li><a href="mailto:hello@onyxxclub.com">hello@onyxxclub.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-buttons reveal">
+                <button class="footer-btn footer-btn-gold" onclick="document.getElementById('apply').scrollIntoView({behavior:'smooth'})">
+                    <i class="fas fa-paper-plane"></i> Apply Now
+                </button>
+                <button class="footer-btn footer-btn-outline" onclick="document.getElementById('models').scrollIntoView({behavior:'smooth'})">
+                    <i class="fas fa-eye"></i> View Portfolio
+                </button>
+                <button class="footer-btn footer-btn-ghost" onclick="showToast('Our team will reach out within 24 hours.','success')">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </button>
+            </div>
+            <div class="footer-bottom">
+                <p>2026 ONYXX CLUB. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="scripts/hero-scene.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
