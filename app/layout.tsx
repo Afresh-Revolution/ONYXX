@@ -1,6 +1,7 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 import type { Metadata } from "next";
 import { Nunito, Outfit } from "next/font/google";
+import "./globals.scss";
 
 const outfit = Outfit({
   subsets: ["latin"],
