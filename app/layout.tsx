@@ -1,7 +1,6 @@
 import { ScrollReveal } from "@/components/ScrollReveal";
 import type { Metadata } from "next";
 import { Nunito, Outfit } from "next/font/google";
-import "./globals.scss";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -19,6 +18,10 @@ export const metadata: Metadata = {
   title: "ONYXX CLUB — Modeling Agency",
   description:
     "Where elegance meets excellence. Data-driven talent development and placement.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
